@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Window Open Example</title>
+</head>
+<body>
+  <!-- დავალება 12.1 -->
+  <button onclick="openWindow()">Open in New Tab</button>
+
+  <!-- დავალება 12.2 -->
+  <button onclick="openCustomWindow()">Open Custom Window</button>
+  <!--დავალება 12.3-->
+    <h1>JavaScript BOM Window Screen</h1>
+    <div class="result"></div>
+    <button class="Btn">დააკლიკე</button>
+    <h3>დააკლიკე ამ ღილაკზე, და გაიგებ შენი ეკრანის მონაცემებს</h3>
+    <!--დავალება 12.4-->
+    <h2>JavaScript Prompt</h2>
+     <button onclick="myFunc()">დააკლიკე</button>
+     <p id="demo"></p>
+
+
+
+  <script>
+    //  ხსნის საიტს ახალ ტაბში დავალება 12.1 
+    function openWindow() {
+      window.open("https://ge.itstep.org/", "_blank");
+    }
+
+    //  ხსნის საიტს popup ფანჯარაში მითითებული ზომებით    დავალება 12.2 
+    function openCustomWindow() {
+      window.open(
+        "https://ge.itstep.org/",
+        "_blank",
+        "width=600,height=400,top=100,left=200"
+      );
+    }
+    //დავალება 12.3
+    document.querySelector(".Btn").addEventListener("click", function() {
+      let resultDIV = document.querySelector(".result");
+      resultDIV.innerHTML= "ეკრანის სიგანე: " + window.screen.width + "<br>"
+      + "ეკრანის სიმაღლე: " + window.screen.height ;
+
+    })
+    // დავალება 12.4
+    function myFunc(){ 
+      let name = prompt("მიუთითეთ თქვენი სახელი");
+      let demo  = document.getElementById("demo");
+      if (name ){
+       demo.innerHTML = "თქვენი სახელი: " + name;
+      } else {
+        demo.innerHTML = "გთხოვთ შეიყვანოთ ტექსტი: " + name;
+      }
+    }
+
+  </script>
+</body>
+</html>
