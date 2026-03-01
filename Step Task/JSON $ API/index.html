@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fake Store - პროდუქტები</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 2rem;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    }
+
+    .card-img-container {
+      height: 220px;
+      padding: 15px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid #eee;
+    }
+
+    .card-img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    .card-content {
+      padding: 1.2rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0 0 0.7rem 0;
+      line-height: 1.35;
+      min-height: 2.7rem;
+      overflow: hidden;
+    }
+
+    .card-description {
+      font-size: 0.92rem;
+      color: #666;
+      line-height: 1.45;
+      margin: 0 0 1rem 0;
+      flex-grow: 1;
+      overflow: hidden;
+    }
+
+    .card-footer {
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .price {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #e74c3c;
+    }
+
+    .category {
+      font-size: 0.85rem;
+      color: #7f8c8d;
+      background: #ecf0f1;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>ონლაინ მაღაზია — პროდუქტები</h1>
+
+    <div class="products-grid" id="products">
+      <!-- JavaScript აქ ჩაგვიწერეს ბარათებს -->
+    </div>
+  </div>
+
+  <script>
+    fetch('https://fakestoreapi.com/products') /* წამოიღოს პროდუქტები  */
+      .then(res => res.json()) /*გადაქმნას ობიექტად*/
+      .then(products => {// პროდუქტების მასივი
+        const container = document.getElementById('products');// პროდუქტის კონტეინერი
+        
+        products.forEach(product => { /*20 პროდუქტს გვაძლევს*/
+          const card = document.createElement('div');//ახალი დივი
+          card.className = 'card';// კლასი
+
+          card.innerHTML = `
+            <div class="card-img-container"> 
+              <img src="${product.image}" alt="${product.title}" class="card-img">
+            </div>
+            <div class="card-content">
+              <h2 class="card-title">${product.title}</h2>
+              <p class="card-description">${product.description}</p>
+              
+              <div class="card-footer">
+                <span class="price">$${product.price}</span>
+                <span class="category">${product.category}</span>
+              </div>
+            </div>
+          `;//დივი სურათის ზონა, ინფო api-დან მოდის ქოლბექით
+           /* ერთი ცვლადის მეორე დოლარის */
+          container.appendChild(card);
+        });
+      })
+      .catch(err => {
+        console.error('Error:', err);
+        document.getElementById('products').innerHTML = 
+          '<p style="text-align:center;color:#e74c3c">პროდუქტების ჩატვირთვა ვერ მოხერხდა...</p>';
+      });/*შეცდომაზე ეს ტექსტი გამოჩნდება*/
+  </script>
+
+</body>
+</html>
