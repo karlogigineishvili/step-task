@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DOM-თან მუშაობა, დამატებითი ბიბლიოთეკები</title>
+
+</head>
+<body>
+  <!--დავალება 8.1
+Html კოდში მოცემულია ღილაკი id სელექტორით "button". querySelector–ის გამოყენებით მოვძებნოთ ეს
+ღილაკი id–ის მიხედვით და მიღებული შედეგი ჩავწეროთ ცვლადში myButton. შემდეგ myButton–ის
+მნიშვნელობა კონსოლზე გამოვიტანოთ-->
+
+
+ <input id="button" type="submit">
+
+ <script>
+let myButton = document.querySelector('#button');
+   console.log(myButton);
+ </script>
+ <!--დავალება 8.2
+Html კოდში მოცემულია 3 აბზაცი. querySelector–ის გამოყენებით მიიღეთ ყოველი აბზაცის ბმული, ჩაწერეთ
+ისინი ცალ–ცალკე ცვლადებში და ამ ცვლადების მნიშვნელობები კონსოლზე გამოიტანეთ.-->
+ <p id="p1">აბზაცი1</p>
+ <p id="p2">აბზაცი2</p>
+ <p id="p3">აბზაცი3</p>
+
+ <script>
+  let p1 = document.querySelector('#p1');   
+  let p2 = document.querySelector('#p2');   
+  let p3 = document.querySelector('#p3');   
+    console.log(p1);
+    console.log(p2);
+    console.log(p3);
+ </script>
+<!--დავალება 8.3
+Html კოდში მოცემულია 2 აბზაცი. querySelector–ის გამოყენებით მიიღეთ პირველი აბზაცის ბმული დივიდან
+რომლის id-ია "twoParagraphs". მიღებული შედეგი კონსოლზე გამოვიტანოთ.-->
+
+ <div id="twoParagraphs">
+ <p>პირველი აბზაცი</p>
+ <p>მეორე აბზაცი</p>
+ </div>
+
+ <script>
+let paragraphs = document.querySelectorAll(`#twoParagraphs p`)
+console.log(paragraphs)
+ </script>
+ <!--დავალება 8.4
+Html კოდში მოცემულია 2 აბზაცი. querySelector–ის გამოყენებით მიიღეთ პირველი აბზაცის ბმული რომლის
+კლასია "p". მიღებული შედეგი კონსოლზე გამოვიტანოთ.-->
+ <p class="p">text1</p>
+ <p class="p">text2</p>
+ <script>
+  let firstParagraphs = document.querySelector( `.p`)
+  console.log(firstParagraphs)
+ </script>
+ <!--დავალება 8.5
+მოცემულია 3 ღილაკი. ყოველი ღილაკის დაკლიკებაზე კოსოლზე გამოიტანეთ შესაბამისი შეტყობინება
+'პირველი ღილაკი', 'მეორე ღილაკი', 'მესამე ღილაკი'. მინიშნება: ყველა ღილაკისთვის გამოაცხადეთ
+ცვლადები, რომლებშიც querySelector–ის გამოყენებით ჩაწერეთ შესაბამისი ღილაკების ბმულები. ამ ცვალდებს
+გაუწერეთ addEventListener, რომელიც ღილაკის დაკლიკებაზე კონსოლზე გამოიტანს შესაბამის ტექსტს.-->
+<input id="button_1" type="submit">
+<input id="button_2" type="submit">
+<input id="button_3" type="submit">
+<script>
+  let btn1 = document.querySelector("#button_1")
+  btn1.addEventListener("click", function (){
+  console.log('პირველი ღილაკი')
+  } );
+  let btn2 = document.querySelector("#button_2")
+  btn2.addEventListener("click", function (){
+  console.log('მეორე ღილაკი')
+  }  );
+  let btn3 = document.querySelector("#button_3")
+  btn3.addEventListener("click", function (){
+  console.log('მესამე ღილაკი')
+  } );
+
+</script>
+<!--დავალება 8.6
+მოცემულია შემდეგი Html კოდი: -->
+ <input id="button_11" type="submit" value="2 + 2">
+ <input id="button_22" type="submit" value="3 * 3 ">
+ <input id="button_33" type="submit" value="4 / 4 ">
+ <!-- ასევე მოცემულია 3 ფუნქცია:-->
+  <script>
+ function sum() {
+ console.log(2 + 2);
+ }
+ function multiplication() {
+ console.log(3 * 3);
+ }
+ function divide() {
+ console.log(4 / 4);
+ }
+ let btn11 = document.querySelector("#button_11");
+ let btn22 = document.querySelector("#button_22");
+ let btn33 = document.querySelector("#button_33");
+ 
+ btn11.addEventListener("click", sum);
+ btn22.addEventListener("click", multiplication);
+ btn33.addEventListener("click", divide);
+   //დაწერეთ კოდი, რომლითაც პირველ ღილაკზე დაჭერით შესრულდება ფუნქცია sum , მეორე ღილაკზე დაჭერით
+   //ფუნქცია multiplication და მესამე ღილაკზე დაჭერით ფუნქცია divide. 
+ </script>
+ <!--დავალება 8.7
+   მოცემულია Html კოდი: -->
+ <p id="elem1">First Paragraph</p>
+ <p id="elem2">Second Paragraph</p>
+ <p id="elem3">Third Paragraph</p>
+ <script>
+ // ასევე მოცემულია ფუნქცია:
+ function myFunc() {
+ console.log('საინტერესო შეტყობინება');
+ }
+ let ele1 = document.querySelector("#elem1");
+ let ele2 = document.querySelector("#elem2");
+ let ele3 = document.querySelector("#elem3");
+
+ ele1.addEventListener("click", myFunc);
+ ele2.addEventListener("click", myFunc);
+ ele3.addEventListener("click", myFunc);
+// დაწერეთ კოდი, რომელიც ყოველ აბზაცზე დაკლიკებისას გამოიძახებს ფუნქციას myFunc.
+</script>
+<!--დავალება 8.8
+მოცემულია Html კოდი: -->
+<input id="sutton" type="submit" value="სუპერ ღილაკი">
+<script>
+//ასევე მოცემულია ორი ფუნქცია:
+ function myFunc1() {
+ alert('საინტერესო შეტყობინება');
+ }
+ function myFunc2() {
+ console.log('სუპერ ღილაკზე მოხდა დაკლიკება');
+ }
+let action = document.querySelector("#sutton")
+action.addEventListener("click", () => {
+  myFunc1();
+  myFunc2();
+});
+//დაწერეთ კოდი, რომელიც ღილაკზე დაკლიკებისას ჯერ გამოიძახებს ფუნქციას myFunc1–ს, მერე myFunc2–ს.
+</script>
+<!--   
+დავალება 8.9
+მოცემულია Html კოდი: -->
+ <p id="myText">Some text</p>
+ <script>
+ //ასევე მოცემულია სამი ფუნქცია:
+ function myFunc1() {
+ alert('შეტყობინება1');
+ }
+ function myFunc2() {
+ alert('შეტყობინება2');
+ }
+ function myFunc3() {
+ alert('შეტყობინება3');
+ }
+ ///დაწერეთ კოდი, რომელიც აბზაცზე დაკლიკებისას ჯერ გამოიძახებს ფუნქციას myFunc1–ს, მერე myFunc2–ს და   
+ //ბოლოს myFunc3–ს.
+ let myText = document.querySelector("#myText");
+ myText.addEventListener("click", () => {
+  myFunc1();
+  myFunc2();
+  myFunc3();
+ })
+</script>
+<!--დავალება 8.10
+მოცემულია რაიმე ღილაკი. მასზე ორმაგი დაკლიკებით კონსოლზე გამოვიდეს შეტყობინება 'სუპერ ღილაკზე
+მოხდა ორმაგი დაკლიკება'-->
+<input id="cutton" type="button" value="სუპერ ღილაკი">
+<script>
+let dclick = document.querySelector("#cutton");
+dclick.addEventListener("dblclick",  () => {
+  console.log(`სუპერ ღილაკზე
+მოხდა ორმაგი დაკლიკება`)
+});
+</script>
+
+<!--დავალება 8.11
+მოცემულია რაიმე ღილაკი. მასზე მაუსის გადატრებისას (mouse over) კონსოლზე გამოვიდეს შეტყობინება
+'სუპერ ღილაკზე მოხდა მაუსის გადატარება'-->
+
+<input id="button811" type="button" value="სუპერ ღილაკი">
+<script>
+let btn811 = document.querySelector("#button811");
+btn811.addEventListener("mouseover", () => {
+  console.log("სუპერ ღილაკზე მოხდა მაუსის გადატარება")
+});
+</script>
+<!--
+დავალება 8.12
+მოცემულია რაიმე ღილაკი. მისგან მაუსის მოცილებისასა (mouse out) კონსოლზე გამოვიდეს შეტყობინება
+'სუპერ ღილაკიდან მოხდა მაუსის მოცილება'-->
+
+<input id="button812" type="button" value="სუპერ ღილაკი">
+<script>
+  let btn812 = document.querySelector("#button812");
+  btn812.addEventListener("mouseout", () =>{
+    console.log("სუპერ ღილაკიდან მოხდა მაუსის მოცილება")
+  });
+</script>
+<!-- დავალება 8.13
+მოცემულია რაიმე ღილაკი. მასზე მაუსის გადატრებისას (mouse over) კონსოლზე გამოვიდეს შეტყობინება
+'სუპერ ღილაკზე მოხდა მაუსის გადატარება', ხოლო მისგან მაუსის მოცილებისასა გამოვიდეს შეტყობინება
+'სუპერ ღილაკიდან მოხდა მაუსის მოცილება'-->
+<input id="button813" type="button" value="სუპერ ღილაკი">
+<script>
+  let btn813 = document.querySelector("#button813");
+  btn813.addEventListener("mouseover", () => {
+    console.log("სუპერ ღილაკზე მოხდა მაუსის გადატარება")
+  });
+  btn813.addEventListener("mouseout" , () =>{
+    console.log("სუპერ ღილაკიდან მოხდა მაუსის მოცილება")
+  })
+</script>
+
+<!-- დავალება 8.14
+Html კოდში მოცემულია პარაგრაფი, რომლის id არის myText: -->
+ <p id="myText814">Some text</p>
+ <script>
+  let myElemm = document.querySelector("#myText814");
+  myElemm.textContent = "ახალი პარაგრაფი";
+  // querySelector–ით მივიღოთ ეს პარაგრაფი და მივანიჭოთ ცვლადს myElem-ს. ტtextContent-ის საშუალებით
+//myElem-ში ჩავწეროთ ტექსტი 'ახალი პარაგრაფი'.
+</script>
+
+
+</body>
+</html>
