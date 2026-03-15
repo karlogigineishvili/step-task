@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript-ის მასივებთან მუშაობა </title>
+
+</head>
+<p id="my-Address">მე ვცხოვრობ საქართველოში, შემდეგ მისამართზე:</p>
+
+<body>
+    <script>
+//         დავალება 3.1
+// გამოცხადებულია ცვლადები num1 და num2. num2-ის მნიშვნელობა გადაიყვანე რიცხვით ფორმატში. num1
+// და num2 დაამრგვალეთ მთელ რიცხვამდე, გაამრავლეთ ერთმანეთზე, შედეგი ჩაწერეთ result ცვლადში და
+// გამოიტანეთ ვებ გვერდზე document.write-ით.
+let num1 = 7.45, num2 = '13.56';
+num2 = Number(num2);
+num1=Math.round(num1);
+num2=Math.round(num2);
+let result = num1 * num2;
+document.write(result);
+// დავალება 3.2
+// მოცემული გვაქვს რიცხვები num1 და num2. მათი ჯამი ჩაწერეთ result ცვლადში, Math.toFixed მეთოდით
+// დაამრგვალეთ მეასედი სიზუსტით და გამოიტანეთ ეკრანზე.
+let numb1 = 20.3;
+let numb2 = 27.2;
+let sum = numb1+numb2;
+let conclu= sum.toFixed(2);
+console.log(conclu);
+// დავალება 3.3
+// მოცემული გვაქვს რიცხვი num. ამოიღეთ მისი კავდრატული ფესვი, დაამრგვალეთ ათეულის სიზუსტით,
+// შედეგი ჩაწერეთ result ცვლადში და გამოიტანეთ კონსოლზე.
+let num = 77;
+let squere = Math.sqrt(num);
+squere = squere.toFixed(1);
+console.log(squere);
+// დავალება 3.4
+// მოცემული გვაქვს რიცხვი num. აიყვანეთ მისი მნიშვნელობა კუბში, დაამრგვალეთ ასეულის სიზუსტით,
+// შედეგი ჩაწერეთ result ცვლადში და გამოიტანეთ კონსოლზე.
+let number  = 3.55;
+let power = Math.pow(number,3);
+power = power.toFixed(2);
+console.log(power);
+// დავალება 3.5
+// შექმენით ფუნქცია info, რომელსაც პარამეტრად გადაეცემა სტრინგი. გადაცემული სტრინგი alert-ით
+// გამოიტანეთ ეკრანზე. 
+function info(string){
+    alert("დავალება 5")
+};
+info("დავალება 5");
+// დავალება 3.6
+// შექმენით ფუნქციa exponentiation, რომელიც არგუმენტად მიიღებს 2 რიცხვს, გამოინგარიშებს მნიშვნელობას:
+// პირველი რიცხვი ხარისხად მეორე რიცხვი, შედეგს alert-ით გამოიტანს ეკრანზე და ასევე დააბრუნებს მას.
+function exponentiation(a,b){
+    let result = Math.pow(a,b)
+    alert(result);
+    return result
+};
+exponentiation(2,3);
+// //დავალება 3.7
+// შექმენით ფუნქცია isEven, რომელიც არგუმენტად მიიღებს 1 რიცხვს, თუ ეს რიცხვი ლუწია დააბრუნებს true-ს
+// თუ არა false-ს. მინიშნბა: კონსოლში წაეთამაშეთ ლუწ და კენტ რიცხვებს, ნახეთ რას გვაძლევს მათი ნაშთი
+// (ოპერატორი %) 2-ზე გაყოფის შედეგად.
+function isEven(number){
+    if( number % 2 == 0){
+    return true }
+    else{ return false}
+
+
+};
+console.log(isEven(2));
+console.log(isEven(1));
+// დავალება 3.8
+// შექმენით ფუნქცია, რომელსაც გადაეცემა ორი პარამეტრი: ერთი სტრინგ ტიპის და მეორე რიცხვითი ტიპის.
+// ფუნქციამ უნდა დააბრუნოს პირველი პარამერტის შესაბამისი სტრინგის წინა ნაწილი, რომლის სიმბოლოების
+// რაოდენობა მითითებულია მეორე პარამეტრში.
+function two(strin, num){
+return(strin.slice(0,num))};
+console.log(two("task",2));
+// Html გვერდში მოცემული გვაქვს პარაგრაფი ინდექსით "my-Address":
+// 
+// შექმენით ფუნქცია address(addr), რომელსაც პარამეტრად გადაეცემა სტრინგი. ფუნქცია ამ სტრინგს
+// .innerHTML მეთოდით დაამატებს "my-Address" ინდექსის მქონე ელემენტის შემცველობას ახალ ხაზზე.
+// ფუნქციის შექმნის შემდეგ მომხმარებელს prompt-ის საშუალებით მოთხოვეთ მისამართის შეყვანა, შემდეგ
+// გამოიძახეთ ფუნქცია address, რომელსაც პარამეტრად გადაეცით ეს მისამართი.
+function address(addr){
+    let element = document.getElementById("my-Address");
+    element.innerHTML += "<br>" + addr;
+
+
+
+}
+let myAddr = prompt ("შეიყვანე შენი მისამართი");
+address(myAddr);
+// დავალება 3.10
+// შევქმნათ ფუნქცია რომელიც პარამეტრად გადაცემულ ორი რიცხვის ნამრავს დაამრგვალებს ათეულამდე |
+// ერთეულამდე | ასეულამდე. 
+function multi(num1,num2){
+    let result = num1 * num2;
+    return (Math.round(result));
+}
+console.log(multi(7,5));
+// დავალება 3.11
+// შევქმნათ ფუნქცია რომელიც პარამეტრად გადაცემულ სტრინგს გაფილტრავს სიტყვა "HTML"-ის მიხედვით და
+// დააბრუნებს ახალ სტრინგს "HTML" სიტყვის გარაშე.
+function clean(string){
+    return(string.replace("HTML",""));
+  
+}
+console.log(clean("HTML არ არის პროგრამირების ენა"));
+// დავალება 3.12
+// განსაზღვრეთ ისრული ფუნქცია squared, რომელიც დააბრუნებს მასზე გადაცემული არგუმენტის კვადრულ
+// მნიშვნელობას.
+var squared = (num) => (num) * (num);
+console.log(squared(2));
+   </script>
+</body>
+</html>
